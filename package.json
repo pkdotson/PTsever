@@ -4,6 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
+    "heroku-postbuild": "webpack",
+    "start": "node index.js",
     "build": "NODE_ENV=production webpack --progress",
     "dev": "npm-run-all --parallel server client",
     "server": "nodemon index.js",
