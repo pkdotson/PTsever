@@ -12,7 +12,6 @@
     "client": "webpack --watch --progress",
     "linter": "eslint src",
     "bundlesize": "bundlesize",
-    "precommit": "eslint src --quiet",
     "mg": "mongod --dbpath=/data"
   },
   "dependencies": {
