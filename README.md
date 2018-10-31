@@ -39,16 +39,22 @@ Video: displays video and its comments when clicked
 
 ### Client.js
 
-This part is the only part that's not server side rendering. It is the entry file for webpack to create bundle. 
+This part is the only part that's not server side rendering. It is the entry file for webpack to create bundle.js to ran on the client. Css are loaded using `css-loader`. The bundle file can be found in dist folder. 
 
+
+### ga.js
+
+Helper function that implements google youtube api
 
 ### Server.js
 
 Setup server and api
-
+```
   GET /videos: return 10 top most recently viewed videos
+```
+```
   POST /videos: save a revently viewed video
-
+```
 
 ### Index (SSR)
 
@@ -62,7 +68,12 @@ node index.js
 
 This project deploys to heroku using mongodb addon
 
-
+```
+  "scripts": {
+    "heroku-postbuild": "webpack",
+    "start": "node index.js",
+  }
+```
 
 
 
