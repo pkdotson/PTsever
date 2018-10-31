@@ -5,6 +5,7 @@ import bodyParser from 'body-parser'
 import React from "react";
 import { renderToString } from "react-dom/server";
 import App from './App';
+const PORT = process.env.PORT || 2048 
 
 import { MongoClient } from "mongodb";
 import mongoose from 'mongoose';
@@ -83,7 +84,7 @@ app.get( "/", ( req, res ) => {
         res.end( htmlTemplate( reactDom ) );*/
 } );
 
-app.listen( 2048 );
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 function htmlTemplate( reactDom ) {
     return `
