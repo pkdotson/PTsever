@@ -15,15 +15,53 @@ Run dev mode with
 
 Test locally: `http://localhost:2048` 
 
+### MongoDB
+
+Video Schema
+
+```
+  {
+    _id: primary ID, 
+    videoId: String,    // video Id used to display video
+    title: String, 
+    poster: String      // thumbnail url
+  }
+```
+### React Components
+App:  root component that handles most of the state management and action calls
+
+List:  creates a list of recomended videos from search and recently viewed history
+
+Video: displays video and its comments when clicked
+
+  
 
 
-### Client  
+### Client.js
+
+This part is the only part that's not server side rendering. It is the entry file for webpack to create bundle. 
 
 
-### Server
+### Server.js
+
+Setup server and api
+
+  GET /videos: return 10 top most recently viewed videos
+  POST /videos: save a revently viewed video
 
 
-### Index
+### Index (SSR)
+
+This is the entry file to start node server. This file loads the babel-register and sets up the babel plugins needed to run JSX and ESModules on the server.
+
+```
+node index.js
+```
+
+### Deployment 
+
+This project deploys to heroku using mongodb addon
+
 
 
 
