@@ -44,16 +44,6 @@ const videoSchema = Schema({
 
 const Video = mongoose.model('video', videoSchema);
 
-// create record
-/*mongoose.connect('mongodb://localhost/video', function(err) {
-  if (err) throw err;
-});*/
-
-
-// get top 10 record
-
-
-
 
 app.use( express.static( path.resolve( __dirname, "../dist" ) ) );
 
@@ -83,14 +73,14 @@ app.post("/video", (req, res) => {
 });
 
 app.get( "/", ( req, res ) => {
-
-        const jsx = (
+  res.send("ok")
+       /* const jsx = (
           <App />
         );
         const reactDom = renderToString( jsx );
 
         res.writeHead( 200, { "Content-Type": "text/html" } );
-        res.end( htmlTemplate( reactDom ) );
+        res.end( htmlTemplate( reactDom ) );*/
 } );
 
 app.listen( 2048 );
