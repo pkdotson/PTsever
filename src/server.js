@@ -10,16 +10,8 @@ const PORT = process.env.PORT || 2048
 import { MongoClient } from "mongodb";
 import mongoose from 'mongoose';
 
-
-
-
-/*History.create({
-  id: "xefdsa",
-  title: "bill test",
-  poster: "www.google.com",
-  date: Date.now
-})*/  
 const app = express();
+const mgURL = process.env.MONGODB_URI || 'mongodb://localhost/video';
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -50,11 +42,11 @@ app.use( express.static( path.resolve( __dirname, "../dist" ) ) );
 
 app.get("/videos", (req, res) => {
   console.log("-------------")
-  mongoose.connect('mongodb://localhost/video', function(err) {
-  Video.find().sort('-date').limit(10).exec(function(err, videos){
-    console.log(videos)
-    res.json({videos})
-    });
+  mongoose.connect(mgURL, function(err) {
+    Video.find().sort('-date').limit(10).exec(function(err, videos){
+      console.log(videos)
+      res.json({videos})
+      });
   });
   console.log('-----');
 });
@@ -67,9 +59,11 @@ app.post("/video", (req, res) => {
     title: req.body.title,
     poster: req.body.poster
   }
-  Video.create(video, function(err) {
-    if (err) res.status(500);
-    res.json({ video })
+  mongoose.connect(mgURL, function(err) {
+    Video.create(video, function(err) {
+      if (err) res.status(500);
+      res.json({ video })
+    });
   });
 });
 
