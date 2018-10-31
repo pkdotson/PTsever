@@ -74,14 +74,13 @@ app.post("/video", (req, res) => {
 });
 
 app.get( "/", ( req, res ) => {
-  res.send("ok")
-       /* const jsx = (
+        const jsx = (
           <App />
         );
         const reactDom = renderToString( jsx );
 
         res.writeHead( 200, { "Content-Type": "text/html" } );
-        res.end( htmlTemplate( reactDom ) );*/
+        res.end( htmlTemplate( reactDom ) );
 } );
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
